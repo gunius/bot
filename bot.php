@@ -7,3 +7,5 @@
  */
 
 echo "I am bot.";
+
+echo "time";
