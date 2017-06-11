@@ -37,6 +37,10 @@ class ComposerStaticInit515185815fbeacc3fec7224451f9fd02
         array (
             'FastRoute\\' => 10,
         ),
+        'D' => 
+        array (
+            'Dotenv\\' => 7,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -62,7 +66,8 @@ class ComposerStaticInit515185815fbeacc3fec7224451f9fd02
         ),
         'LINE\\' => 
         array (
-            0 => __DIR__ . '/..' . '/linecorp/line-bot-sdk/src',
+            0 => __DIR__ . '/../..' . '/src',
+            1 => __DIR__ . '/..' . '/linecorp/line-bot-sdk/src',
         ),
         'Interop\\Container\\' => 
         array (
@@ -71,6 +76,10 @@ class ComposerStaticInit515185815fbeacc3fec7224451f9fd02
         'FastRoute\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/fast-route/src',
+        ),
+        'Dotenv\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/vlucas/phpdotenv/src',
         ),
     );
 
