@@ -114,5 +114,12 @@ class Route
             $res->write('OK');
             return $res;
         });
+
+        $app->get('/verify', function(\Slim\Http\Request $req, \Slim\Http\Response $res) {
+            $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient('DMN0AvauoUylpekM9kuZ8/rLFA8X5u2HbpGNJ6EYVcMiYAhEQ9ew8ynz8KDSkVEcOtWPy8OqUYv2BJjAkKw6B/KD/OJFjz4Vj72oSORkTZYrN59b9jlJ9LTnX1cyjZLlifTfZ45C+fOHIQrL9HFdjwdB04t89/1O/w1cDnyilFU=');
+            $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => '38c1e8741e77c4e57696011dc2599392']);
+            var_dump($httpClient);
+            var_dump($bot);
+        });
     }
 }
