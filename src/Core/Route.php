@@ -119,12 +119,12 @@ class Route
 
             $bot = $this->bot;
 
-            $bot->replyMessageNew($bot->replyToken, json_encode($bot->message));
-
+            //$bot->replyMessageNew($bot->replyToken, json_encode($bot->message));
+            $bot->replyMessage($bot->replyToken, "Hello");
 
             if ($bot->isSuccess()) {
-                echo 'Succeeded!';
-                exit();
+                //echo 'Succeeded!';
+                //exit();
             }
 
 //            if (empty($bot->isEvents)) {
@@ -145,6 +145,7 @@ class Route
 //            if ($bot->isSuccess()) {
 //                $res->write('OK');
 //            }
+            $res->write('OK');
             return $res;
         });
     }
