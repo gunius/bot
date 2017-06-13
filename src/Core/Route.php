@@ -116,25 +116,35 @@ class Route
         });
 
         $app->post('/bot', function(\Slim\Http\Request $req, \Slim\Http\Response $res) {
-            $bot = $this->bot;
-            if (empty($bot->isEvents)) {
-                return $res->withStatus(400, 'Invalid event request');
-            }
-            $signature = $req->getHeader(HTTPHeader::LINE_SIGNATURE);
-            $events = $bot->parseEventRequest($req->getBody(), $signature[0]);
-            foreach ($events as $event) {
-                $handler = null;
-                if ($event instanceof MessageEvent) {
-                    if ($event instanceof TextMessage) {
-                        $res->write($event->getMessageType());
-                    }
-                }
 
-            }
-            $bot->replyMessageNew($bot->replyToken, 'hello.');
+            $bot = $this->bot;
+
+            $bot->replyMessageNew($bot->replyToken, json_encode($bot->message));
+
+
             if ($bot->isSuccess()) {
-                $res->write('OK');
+                echo 'Succeeded!';
+                exit();
             }
+
+//            if (empty($bot->isEvents)) {
+//                return $res->withStatus(400, 'Invalid event request');
+//            }
+//
+//            $signature = $req->getHeader(HTTPHeader::LINE_SIGNATURE);
+//            $events = $bot->parseEventRequest($req->getBody(), $signature[0]);
+//            foreach ($events as $event) {
+//                $handler = null;
+//                if ($event instanceof MessageEvent) {
+//                    if ($event instanceof TextMessage) {
+//                        $res->write($event->getMessageType());
+//                    }
+//                }
+//            }
+//            $bot->replyMessageNew($bot->replyToken, 'hello.');
+//            if ($bot->isSuccess()) {
+//                $res->write('OK');
+//            }
             return $res;
         });
     }
