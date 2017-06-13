@@ -44,8 +44,6 @@ class Route
             /** @var \Monolog\Logger $logger */
             $logger = $this->logger;
             $signature = $req->getHeader(HTTPHeader::LINE_SIGNATURE);
-            var_dump($signature);
-            var_dump("tom");
             if (empty($signature)) {
                 $logger->info('Signature is missing');
                 return $res->withStatus(400, 'Bad Request');
@@ -122,7 +120,18 @@ class Route
             if (empty($bot->isEvents)) {
                 return $res->withStatus(400, 'Invalid event request');
             }
-            $bot->replyText($bot->replyToken, 'hello.');
+            $signature = $req->getHeader(HTTPHeader::LINE_SIGNATURE);
+            $events = $bot->parseEventRequest($req->getBody(), $signature[0]);
+            foreach ($events as $event) {
+                $handler = null;
+                if ($event instanceof MessageEvent) {
+                    if ($event instanceof TextMessage) {
+                        $res->write($event->getMessageType());
+                    }
+                }
+
+            }
+            $bot->replyMessageNew($bot->replyToken, 'hello.');
             if ($bot->isSuccess()) {
                 $res->write('OK');
             }
