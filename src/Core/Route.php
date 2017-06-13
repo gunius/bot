@@ -44,7 +44,6 @@ class Route
             /** @var \Monolog\Logger $logger */
             $logger = $this->logger;
             $signature = $req->getHeader(HTTPHeader::LINE_SIGNATURE);
-            var_dump($req);
             var_dump($signature);
             var_dump("tom");
             if (empty($signature)) {
