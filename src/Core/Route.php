@@ -45,7 +45,7 @@ class Route
             $logger = $this->logger;
             $signature = $req->getHeader(HTTPHeader::LINE_SIGNATURE);
             var_dump($signature);
-            die("signature");
+            var_dump("tom");
             if (empty($signature)) {
                 $logger->info('Signature is missing');
                 return $res->withStatus(400, 'Bad Request');
