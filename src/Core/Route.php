@@ -116,5 +116,18 @@ class Route
             $res->write('OK');
             return $res;
         });
+
+        $app->post('/bot', function(\Slim\Http\Request $req, \Slim\Http\Response $res) {
+            $bot = $this->bot;
+            if (!empty($bot->isEvents)) {
+                $bot->replyMessageNew($bot->replyToken, json_encode($bot->message));
+
+                if ($bot->isSuccess()) {
+                    $res->write('OK');
+                }
+                return $res->withStatus(400, 'Invalid event request');
+            }
+            return $res;
+        });
     }
 }
